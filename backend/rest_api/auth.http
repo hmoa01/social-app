@@ -1,9 +1,20 @@
+### REGISTER
 POST http://localhost:4000/api/user/signup
 Content-Type: application/json
 
 {
 "firstName": "Dzana",
 "lastName": "Lemes",
+ "email": "dzana@gmail.com",
+  "password": "12345"
+}
+
+### 
+###LOGIN
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
  "email": "dzana@gmail.com",
   "password": "12345"
 }
