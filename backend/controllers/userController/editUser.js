@@ -1,5 +1,5 @@
-const editUser = (req,res) => {
-    res.send(req.params.uid);
-}
+const editUser = (req, res) => {
+  console.log(req.locals);
+};
 
-module.exports = editUser ;
+module.exports = editUser;
