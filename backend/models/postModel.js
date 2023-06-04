@@ -1,5 +1,12 @@
 const { Schema, model } = require("mongoose");
 
+const TagSchema = new Schema(
+  {
+    name: { type: String, required: true },
+  },
+  { _id: false }
+);
+
 const validateField = (field) => field.length > 0;
 
 const postSchema = new Schema(
