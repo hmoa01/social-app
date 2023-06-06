@@ -1,2 +1,14 @@
 ### GET ALL POSTS
 GET http://localhost:4000/api/posts/all?page=2&limit=2
+
+### ADD NEW POST
+POST http://localhost:4000/api/posts/add
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmI1NDdjY2Y1ZmZiOWYxMTA5OTciLCJmaXJzdE5hbWUiOiJNdWhhbWVkIiwibGFzdE5hbWUiOiJMZW1lcyIsInJvbGUiOiJ1c2VyIiwidGltZSI6MTY4NjA1NjQ1NTk3MSwiaWF0IjoxNjg2MDU2NDU1LCJleHAiOjE2ODYxNDI4NTV9.xdF3sHK_1C-rml2lxxrGEHfAOqKyl4zmf4tT0JX0O4k
+
+{
+    "body": "Ovo je neki drugi post!",
+    "title": "Neki drugi title",
+    "image": "Neka slika",
+    "tags": {"name": "neki tag"}
+}
