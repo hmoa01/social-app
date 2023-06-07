@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const verifyToken = require("../middleware/verifyToken");
 
 const router = new Router();
 
@@ -6,6 +7,13 @@ const router = new Router();
 router.get(
   "/:commentId",
   require("../controllers/commentController/singleComment")
+);
+
+//ADD
+router.post(
+  "/add/:postId",
+  verifyToken,
+  require("../controllers/commentController/addComment")
 );
 
 module.exports = router;

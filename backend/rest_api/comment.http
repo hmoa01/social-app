@@ -1,2 +1,11 @@
 ### GET SINGLE COMMENT
 GET http://localhost:4000/api/comments/644b7dabf66cb80c55317804
+
+###ADD COMMENT
+POST http://localhost:4000/api/comments/add/644b7dabf66cb80c55317804
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmI1NDdjY2Y1ZmZiOWYxMTA5OTciLCJmaXJzdE5hbWUiOiJNdWhhbWVkIiwibGFzdE5hbWUiOiJMZW1lcyIsInJvbGUiOiJ1c2VyIiwidGltZSI6MTY4NjE0MjA5NDI3MiwiaWF0IjoxNjg2MTQyMDk0LCJleHAiOjE2ODYyMjg0OTR9.TdmU6ps280CU9vz4wXZI8l4gka3aIGG8_odjiBnS9KE
+Content-Type: application/json
+
+{
+    "body": "Ovo je neki komentar!!!!"
+}
