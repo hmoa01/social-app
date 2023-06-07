@@ -1,6 +1,9 @@
 ### GET ALL POSTS
 GET http://localhost:4000/api/posts/all?page=2&limit=2
 
+### GET SINGLE POST
+GET http://localhost:4000/api/posts/644aedace62d6eb764d77786
+
 ### ADD NEW POST
 POST http://localhost:4000/api/posts/add
 Content-Type: application/json
