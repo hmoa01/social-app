@@ -1,5 +1,8 @@
 ### GET ALL USERS
-GET http://localhost:4000/api/
+GET http://localhost:4000/api/user
+
+### GET SINGLE USER
+http://localhost:4000/api/user/6474ba3892948465c3b74e07
 
 ### SIGNUP USER
 POST http://localhost:4000/api/user/signup
