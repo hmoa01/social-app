@@ -9,17 +9,23 @@ router.get(
   "/post/:postId",
   require("../controllers/commentController/postComments.js")
 );
+//ADD
+router.post(
+    "/add/:postId",
+    verifyToken,
+    require("../controllers/commentController/addComment")
+);
 
 router.get(
   "/:commentId",
   require("../controllers/commentController/singleComment")
 );
 
-//ADD
-router.post(
-  "/add/:postId",
-  verifyToken,
-  require("../controllers/commentController/addComment")
+//DELETE
+router.delete(
+    "/:id",
+    verifyToken,
+    require("../controllers/commentController/deleteComment")
 );
 
 module.exports = router;

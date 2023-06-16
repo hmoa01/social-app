@@ -12,3 +12,8 @@ Content-Type: application/json
 {
     "body": "Ovo je neki komentar!!!!"
 }
+
+### DELETE COMMENT
+DELETE http://localhost:4000/api/comments/644b7dabf66cb80c55317804
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDhjNmRhN2M5YWU0MjI0NzVlNmRiMDEiLCJmaXJzdE5hbWUiOiJNdWhhbWVkIiwibGFzdE5hbWUiOiJMZW1lcyIsInJvbGUiOiJhZG1pbiIsInRpbWUiOjE2ODY5MjQ3MjgyMzksImlhdCI6MTY4NjkyNDcyOCwiZXhwIjoxNjg3MDExMTI4fQ.SjbaS3eWBXntMLO3D5TB4s3IynW31gQHRMslN5EpeTo
+Content-Type: application/json
