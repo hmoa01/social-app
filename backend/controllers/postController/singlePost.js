@@ -1,4 +1,5 @@
-const PostModel = require("../../models/PostModel");
+const PostModel = require("../../models/postModel");
+const {joinPostComments} = require("../../stages/joins");
 
 const singlePost = (req, res) => {
   const { postId } = req.params;
@@ -12,7 +13,7 @@ const singlePost = (req, res) => {
       },
     },
   ];
-  PostModel.aggregate([...pipeline])
+  PostModel.aggregate([...pipeline, ...joinPostComments])
     .then((post) => {
       if (post.length > 0) {
         res.send(post);

@@ -1,4 +1,4 @@
-const PostModel = require("../../models/PostModel");
+const PostModel = require("../../models/postModel");
 
 const addPost = async (req, res) => {
   const { _id } = req.locals;

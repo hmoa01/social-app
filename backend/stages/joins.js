@@ -18,4 +18,14 @@ module.exports = {
     },
     { $unwind: "$user" },
   ],
+  joinPostComments: [
+    {
+      $lookup: {
+        from: "comments",
+        localField: "_id",
+        foreignField: "postId",
+        as: "comments"
+      }
+    }
+  ]
 };
