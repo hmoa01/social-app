@@ -14,4 +14,11 @@ router.post(
   require("../controllers/postController/addPost")
 );
 
+//PUT
+router.put(
+  "/:postId",
+  verifyToken,
+  require("../controllers/postController/editPost")
+);
+
 module.exports = router;
