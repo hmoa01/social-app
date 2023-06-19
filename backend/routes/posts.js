@@ -21,4 +21,7 @@ router.put(
   require("../controllers/postController/editPost")
 );
 
+//DELETE POST
+router.delete("/:postId",verifyToken, require("../controllers/postController/deletePost"))
+
 module.exports = router;

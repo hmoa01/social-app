@@ -18,10 +18,12 @@ const singlePost = (req, res) => {
       if (post.length > 0) {
         res.send(post);
       } else {
-        console.log("Post not exist!");
+        res.send({msg: "Post not exist!"});
       }
     })
-    .catch((error) => console.log(error));
+    .catch(error => {
+      res.send({error: error.message})
+    })
 };
 
 module.exports = singlePost;

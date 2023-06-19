@@ -2,14 +2,15 @@
 GET http://localhost:4000/api/posts/all?page=2&limit=2
 
 ### GET SINGLE POST
-GET http://localhost:4000/api/posts/648f229b463ee6d50109e8e2
+GET http://localhost:4000/api/posts/649011bbf2eaa09013aeb857
 
 ### ADD NEW POST
 POST http://localhost:4000/api/posts/add
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmEzODkyOTQ4NDY1YzNiNzRlMDciLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZXMiLCJyb2xlIjoidXNlciIsInRpbWUiOjE2ODcxMDEzNTI4NTEsImlhdCI6MTY4NzEwMTM1MiwiZXhwIjoxNjg3MTg3NzUyfQ.tdH4-jmud4L28sOvl30f7EnEenp36XNy_s3eK8uNgHk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmEzODkyOTQ4NDY1YzNiNzRlMDciLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZXMiLCJyb2xlIjoidXNlciIsInRpbWUiOjE2ODcxNjMwNzU2MzYsImlhdCI6MTY4NzE2MzA3NSwiZXhwIjoxNjg3MjQ5NDc1fQ.NbNU9QVMskvg8_st5kS6i-9HWXjuM_FkKESvWkFHoeo
+
 {
-    "body": "Test!",
+    "body": "Test za delete",
     "title": "Neki drugi title",
     "image": "Neka slika",
     "tags": {"name": "neki tag"}
@@ -23,3 +24,8 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmEzODkyOTQ4N
 {
     "body": "Dave sada!"
 }
+
+###DELETE POST
+DELETE http://localhost:4000/api/posts/649011bbf2eaa09013aeb857
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmEzODkyOTQ4NDY1YzNiNzRlMDciLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZXMiLCJyb2xlIjoidXNlciIsInRpbWUiOjE2ODcxNjMwNzU2MzYsImlhdCI6MTY4NzE2MzA3NSwiZXhwIjoxNjg3MjQ5NDc1fQ.NbNU9QVMskvg8_st5kS6i-9HWXjuM_FkKESvWkFHoeo
