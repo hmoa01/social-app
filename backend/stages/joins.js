@@ -24,8 +24,36 @@ module.exports = {
         from: "comments",
         localField: "_id",
         foreignField: "postId",
-        as: "comments"
-      }
-    }
-  ]
+        as: "comments",
+      },
+    },
+  ],
+  joinPostLikes: [
+    {
+      $lookup: {
+        from: "likes",
+        localField: "_id",
+        foreignField: "postId",
+        as: "likeInfo",
+        pipeline: [
+          { $sort: { createdAt: -1 } },
+          {
+            $group: {
+              _id: null,
+              userId: { $push: "$userId" },
+              users: {
+                $push: {
+                  firstName: "$firstName",
+                  lastName: "lastName",
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    { $unwind: { path: "$likeInfo", preserveNullAndEmptyArrays: true } },
+    { $addFields: { "likeInfo.count": { $size: "$likeInfo.userId" } } },
+    { $project: { "likeInfo._id": 0, reactions: 0 } },
+  ],
 };

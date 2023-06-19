@@ -5,7 +5,11 @@ const router = new Router();
 
 // GET
 router.get("/all", require("../controllers/postController/allPosts"));
-router.get("/:postId", require("../controllers/postController/singlePost"));
+router.get(
+  "/singlePost/:postId",
+  require("../controllers/postController/singlePost")
+);
+router.get("/:userId", require("../controllers/postController/userPosts"));
 
 //POST
 router.post(
@@ -22,6 +26,10 @@ router.put(
 );
 
 //DELETE POST
-router.delete("/:postId",verifyToken, require("../controllers/postController/deletePost"))
+router.delete(
+  "/:postId",
+  verifyToken,
+  require("../controllers/postController/deletePost")
+);
 
 module.exports = router;

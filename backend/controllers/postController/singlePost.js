@@ -1,5 +1,9 @@
 const PostModel = require("../../models/postModel");
-const {joinPostComments} = require("../../stages/joins");
+const {
+  joinPostComments,
+  joinPostUser,
+  joinPostLikes,
+} = require("../../stages/joins");
 
 const singlePost = (req, res) => {
   const { postId } = req.params;
@@ -13,17 +17,22 @@ const singlePost = (req, res) => {
       },
     },
   ];
-  PostModel.aggregate([...pipeline, ...joinPostComments])
+  PostModel.aggregate([
+    ...pipeline,
+    ...joinPostComments,
+    ...joinPostUser,
+    ...joinPostLikes,
+  ])
     .then((post) => {
       if (post.length > 0) {
         res.send(post);
       } else {
-        res.send({msg: "Post not exist!"});
+        res.send({ msg: "Post not exist!" });
       }
     })
-    .catch(error => {
-      res.send({error: error.message})
-    })
+    .catch((error) => {
+      res.send({ error: error.message });
+    });
 };
 
 module.exports = singlePost;

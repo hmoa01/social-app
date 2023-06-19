@@ -1,8 +1,12 @@
 ### GET ALL POSTS
 GET http://localhost:4000/api/posts/all?page=2&limit=2
 
+### GET USER POSTS
+GET http://localhost:4000/api/posts/644a553656f68374bf796488
+
+
 ### GET SINGLE POST
-GET http://localhost:4000/api/posts/649011bbf2eaa09013aeb857
+GET http://localhost:4000/api/posts/singlePost/644aedace62d6eb764d77785
 
 ### ADD NEW POST
 POST http://localhost:4000/api/posts/add
