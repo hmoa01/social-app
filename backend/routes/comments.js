@@ -6,9 +6,15 @@ const router = new Router();
 //GET
 
 router.get(
+    "/:commentId",
+    require("../controllers/commentController/singleComment")
+);
+
+router.get(
   "/post/:postId",
   require("../controllers/commentController/postComments.js")
 );
+
 //ADD
 router.post(
     "/add/:postId",
@@ -16,10 +22,9 @@ router.post(
     require("../controllers/commentController/addComment")
 );
 
-router.get(
-  "/:commentId",
-  require("../controllers/commentController/singleComment")
-);
+//EDIT
+
+router.put('/:commentId', verifyToken, require('../controllers/commentController/editComment'))
 
 //DELETE
 router.delete(

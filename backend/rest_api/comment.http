@@ -1,16 +1,25 @@
 ### GET SINGLE COMMENT
-GET http://localhost:4000/api/comments/644b7dabf66cb80c55317804
+GET http://localhost:4000/api/comments/649005d0e770ff78d36a599e
 
 ### GET COMMENTS BY POST ID
 GET http://localhost:4000/api/comments/post/644aedace62d6eb764d77786
 
 ###ADD COMMENT
 POST http://localhost:4000/api/comments/add/644b7dabf66cb80c55317804
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmI1NDdjY2Y1ZmZiOWYxMTA5OTciLCJmaXJzdE5hbWUiOiJNdWhhbWVkIiwibGFzdE5hbWUiOiJMZW1lcyIsInJvbGUiOiJ1c2VyIiwidGltZSI6MTY4NjE0MjA5NDI3MiwiaWF0IjoxNjg2MTQyMDk0LCJleHAiOjE2ODYyMjg0OTR9.TdmU6ps280CU9vz4wXZI8l4gka3aIGG8_odjiBnS9KE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmEzODkyOTQ4NDY1YzNiNzRlMDciLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZXMiLCJyb2xlIjoidXNlciIsInRpbWUiOjE2ODcxNjAyMzc4MzMsImlhdCI6MTY4NzE2MDIzNywiZXhwIjoxNjg3MjQ2NjM3fQ.qQnmFqE4tYZM1yOkJ785GjuxJKH5moM_AtIlY5bz5x8
 Content-Type: application/json
 
 {
-    "body": "Ovo je neki komentar!!!!"
+    "body": "Ovo je neki komentar!!!!",
+}
+
+### EDIT COMMENT
+PUT http://localhost:4000/api/comments/649005d0e770ff78d36a599e
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmI1NDdjY2Y1ZmZiOWYxMTA5OTciLCJmaXJzdE5hbWUiOiJNdWhhbWVkIiwibGFzdE5hbWUiOiJMZW1lcyIsInJvbGUiOiJ1c2VyIiwidGltZSI6MTY4NzE2MDU4MDMxOCwiaWF0IjoxNjg3MTYwNTgwLCJleHAiOjE2ODcyNDY5ODB9.qIkwQeESBXSVcaWoEN17Mh_JmumzSwgAZG6RkLbBCcI
+Content-Type: application/json
+
+{
+  "body": "Drugi user edituje komentar!!!"
 }
 
 ### DELETE COMMENT
