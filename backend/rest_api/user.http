@@ -1,11 +1,11 @@
 ### GET ALL USERS
-GET http://localhost:4000/api/user
+GET http://localhost:4000/api/users
 
 ### GET SINGLE USER
-http://localhost:4000/api/user/6474ba3892948465c3b74e07
+http://localhost:4000/api/users/6474bb547ccf5ffb9f110997
 
 ### SIGNUP USER
-POST http://localhost:4000/api/user/signup
+POST http://localhost:4000/api/users/signup
 Content-Type: application/json
 
 {
@@ -15,10 +15,15 @@ Content-Type: application/json
 }
 
 ### EDIT USER
-PUT http://localhost:4000/api/user/edit/6474ba3892948465c3b74e07
+PUT http://localhost:4000/api/users/edit/6474ba3892948465c3b74e07
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDhjNmRhN2M5YWU0MjI0NzVlNmRiMDEiLCJmaXJzdE5hbWUiOiJNdWhhbWVkIiwibGFzdE5hbWUiOiJMZW1lcyIsInJvbGUiOiJhZG1pbiIsInRpbWUiOjE2ODcxNzQwNjk5NzgsImlhdCI6MTY4NzE3NDA2OSwiZXhwIjoxNjg3MjYwNDY5fQ.vk5Rp8KD3xvnzesWyAn_ZUtIIZe3rHGlBilu4_mctEI
 
 {
   "firstName": "Ahmed"
 }
+
+### DELETE USER
+DELETE http://localhost:4000/api/users/6474bb547ccf5ffb9f110997
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmI1NDdjY2Y1ZmZiOWYxMTA5OTciLCJmaXJzdE5hbWUiOiJNdWhhbWVkIiwibGFzdE5hbWUiOiJMZW1lcyIsInJvbGUiOiJ1c2VyIiwidGltZSI6MTY4NzE4MjM1MzQyMywiaWF0IjoxNjg3MTgyMzUzLCJleHAiOjE2ODcyNjg3NTN9.U5FSxM4YwRGpilgMpqYiPhj2zdHaJQIRwWjAii_3xLc

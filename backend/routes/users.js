@@ -13,4 +13,8 @@ router.put(
   require("../controllers/userController/editUser")
 );
 
+//DELETE
+router.delete('/:userId',verifyToken, require('../controllers/userController/deleteUser'))
+
+
 module.exports = router;
