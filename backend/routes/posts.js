@@ -6,6 +6,7 @@ const router = new Router();
 // GET
 router.get("/all", require("../controllers/postController/allPosts"));
 router.get("/filter", require('../controllers/postController/filterPosts'))
+router.get("/search", require('../controllers/postController/searchPost'))
 router.get(
   "/singlePost/:postId",
   require("../controllers/postController/singlePost")

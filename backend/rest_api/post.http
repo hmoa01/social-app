@@ -10,6 +10,10 @@ GET http://localhost:4000/api/posts/singlePost/644aedace62d6eb764d77785
 ### GET POST BY TAGS
 GET http://localhost:4000/api/posts/filter?tags=magical&tags=classic
 
+### SEARCH POST
+GET http://localhost:4000/api/posts/search?q=first
+
+
 ### ADD NEW POST
 POST http://localhost:4000/api/posts/add
 Content-Type: application/json
