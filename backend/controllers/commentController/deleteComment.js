@@ -15,7 +15,7 @@ const deleteComment = async (req,res) => {
         await CommentModel.deleteOne(query)
         res.send({msg: "Comment deleted successfully"});
     } catch (error) {
-        res.status(500).send({msg: "Error deleting message!"})
+        res.status(500).send({msg: "Error deleting comment!"})
     }
 }
 

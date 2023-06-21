@@ -1,4 +1,5 @@
 const PostModel = require("../../models/postModel");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const userPosts = (req, res) => {
   const { userId } = req.params;
@@ -16,7 +17,9 @@ const userPosts = (req, res) => {
       res.send({ posts });
     })
     .catch((error) => {
-      res.send({ error: error.message });
+      res
+          .status(httpStatus.SERVICE_ERROR.status)
+          .send(httpStatus.SERVICE_ERROR.status);
     });
 };
 

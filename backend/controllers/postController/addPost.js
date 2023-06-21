@@ -1,4 +1,5 @@
 const PostModel = require("../../models/postModel");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const addPost = async (req, res) => {
   const { _id } = req.locals;
@@ -13,10 +14,12 @@ const addPost = async (req, res) => {
   post
     .save()
     .then((post) => {
-      res.send(post);
+      res.status(200).send(post);
     })
     .catch((error) => {
-      res.send(error.message);
+      res
+          .status(httpStatus.SERVICE_ERROR.status)
+          .send(httpStatus.SERVICE_ERROR.send);
     });
 };
 

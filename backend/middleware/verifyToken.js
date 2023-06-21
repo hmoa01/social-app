@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/userModel");
+const {httpStatus} = require("../config/HttpErrors");
 require("dotenv").config();
 
 const verifyToken = (req, res, next) => {
@@ -7,7 +8,8 @@ const verifyToken = (req, res, next) => {
     let token = req.headers.authorization;
     jwt.verify(token, process.env.JWT_KEY, async (error, decode) => {
       if (error) {
-        res.send({ msg: "Token is expiries!" });
+        res.status(httpStatus.TOKEN_EXPIRIES.status)
+            .send(httpStatus.TOKEN_EXPIRIES.send)
       } else {
         try {
           let user = await userModel.findOne({ _id: decode._id });
@@ -15,15 +17,16 @@ const verifyToken = (req, res, next) => {
             req.locals = decode;
             next();
           } else {
-            res.status(401).send({ msg: "Token is invalid!" });
+            res.status(httpStatus.TOKEN_EXPIRIES.status).send({msg: "Token is invalid."})
           }
         } catch (error) {
-          console.log(error);
+          res.status(httpStatus.SERVICE_ERROR.status)
+              .send(httpStatus.SERVICE_ERROR.send)
         }
       }
     });
   } else {
-    res.send({ msg: "You not logged" });
+    res.status(httpStatus.TOKEN_EXPIRIES.status).send({msg: "You not logged"})
   }
 };
 

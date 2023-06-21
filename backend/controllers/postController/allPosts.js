@@ -1,5 +1,6 @@
 const PostModel = require("../../models/postModel");
 const { joinPostUser } = require("../../stages/joins");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const allPosts = async (req, res) => {
   const limit = req.query.limit ? parseInt(req.query.limit) : null;
@@ -24,7 +25,9 @@ const allPosts = async (req, res) => {
     .then((posts) => {
       res.send({ posts, count });
     })
-    .catch((error) => console.log(error));
+    .catch((error) =>  res
+        .status(httpStatus.SERVICE_ERROR.status)
+        .send(httpStatus.SERVICE_ERROR.send));
 };
 
 module.exports = allPosts;

@@ -1,4 +1,5 @@
 const CommentModel = require("../../models/commentModel");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const postComments = (req, res) => {
   const { postId } = req.params;
@@ -22,7 +23,8 @@ const postComments = (req, res) => {
       }
     })
     .catch((error) => {
-      console.log(error);
+        res.status(httpStatus.SERVICE_ERROR.status)
+            .send({error:error.message})
     });
 };
 

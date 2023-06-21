@@ -17,8 +17,10 @@ const singleUser = (req,res) => {
         }
 
     ]).then(user => {
-        res.send(user);
-    }).catch(err => console.log(err.message))
+        if(!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+    }).catch(err => res.status(500).json({ error: "Server error" }))
 }
 
 module.exports = singleUser;

@@ -1,4 +1,5 @@
 const userModel = require("../../models/userModel");
+const {httpStatus} = require("../../config/HttpErrors");
 const editUser = (req, res) => {
   const user = req.locals;
   const {userId} = req.params;
@@ -8,14 +9,16 @@ const editUser = (req, res) => {
   if(user.role === "admin") {
     editedData.role = role;
   } else if (userId !== user._id && user.role !== "admin") {
-    return res.send({msg: "You don't have permission!!!"})
+      return res.status(httpStatus.NOT_HAVE_PERMISSION.status)
+          .send({error: "You dont have permission to change other user!"})
   }
 
   userModel.findOneAndUpdate({_id: userId},editedData,{new:true, projection:{password:0}})
       .then(user => {
           res.send(user)
       }).catch(error =>{
-        res.send({error:error.message});
+        res.status(httpStatus.SERVICE_ERROR.status)
+            .send(httpStatus.SERVICE_ERROR.send)
       })
 
 };

@@ -1,5 +1,6 @@
 const userModel = require("../../models/userModel");
 const bcrypt = require("bcrypt");
+const {httpStatus} = require("../../config/HttpErrors");
 const saltRounds = 10;
 
 const signup = async (req, res) => {
@@ -15,10 +16,12 @@ const signup = async (req, res) => {
         res.status(200).send("User is Registred!");
       });
     } else {
-      console.log("User exist!");
+      res.status(httpStatus.EXIST.status)
+          .send(httpStatus.EXIST.send)
     }
   } catch (error) {
-    res.send(error);
+    res.status(httpStatus.SERVICE_ERROR.status)
+        .send({error: error.message})
   }
 };
 

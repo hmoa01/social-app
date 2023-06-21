@@ -1,4 +1,5 @@
 const MessageModel = require("../../models/messageModel");
+const {httpStatus} = require("../../config/HttpErrors");
 const addMessage = (req,res) => {
     const {_id} = req.locals;
     const {userId} = req.params;
@@ -12,9 +13,11 @@ const addMessage = (req,res) => {
 
     let newMessage = new MessageModel(message);
     newMessage.save().then(message => {
-        res.send({message})
+        res.status(200).send({message})
     }).catch(error => {
-        res.send({error: error.message})
+        res
+            .status(httpStatus.NOT_HAVE_PERMISSION.status)
+            .send({ message: error.message });
     })
 }
 

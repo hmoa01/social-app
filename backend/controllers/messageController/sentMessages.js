@@ -1,5 +1,6 @@
 const MessageModel = require("../../models/messageModel");
 const {joinSentMessageUser} = require("../../stages/joins");
+const {httpStatus} = require("../../config/HttpErrors");
 const sentMessages = (req,res) => {
     const {_id} = req.locals;
 
@@ -15,7 +16,9 @@ const sentMessages = (req,res) => {
         MessageModel.aggregate([...pipeline,...joinSentMessageUser]).then(messages => {
         res.send({messages})
     }). catch(error => {
-        res.send({error:error.message})
+            res
+                .status(httpStatus.NOT_HAVE_PERMISSION.status)
+                .send({ message: error.message });
     })
 }
 

@@ -1,4 +1,5 @@
 const PostModel = require("../../models/postModel");
+const {httpStatus} = require("../../config/HttpErrors");
 const deletePost = (req,res) => {
     const user = req.locals;
     const {postId} = req.params;
@@ -16,12 +17,15 @@ const deletePost = (req,res) => {
         if(result.deletedCount === 1) {
             res.send({msg: "Post deleted!!"})
         } else {
-            res.send({msg: "Post deleted, or you don't have permission"});
+            res.status(httpStatus.NOT_HAVE_PERMISSION.status)
+                .send({msg: "Post doesnt exist or you dont have permission to delete."})
         }
 
     })
         .catch(error => {
-        res.send({error: error.message})
+            res
+                .status(httpStatus.SERVICE_ERROR.status)
+                .send(httpStatus.SERVICE_ERROR.send);
     })
 
 

@@ -1,6 +1,7 @@
 const userModel = require("../../models/userModel");
 const bcrypt = require("bcrypt");
 const createToken = require("../../utils/jwt");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -23,9 +24,12 @@ const login = async (req, res) => {
         );
         res.send({ user: currentUser, token });
       } else {
-        console.log(err);
+        res.status(httpStatus.INVALID_DATA.status).
+            send({msg: "Password is not valid!"})
       }
     });
+  } else {
+      res.status(httpStatus.NOT_EXIST.status).send(httpStatus.NOT_EXIST.send);
   }
 };
 

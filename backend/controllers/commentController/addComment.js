@@ -1,4 +1,5 @@
 const CommentModel = require("../../models/commentModel");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const addComment = (req, res) => {
   const { _id, firstName, lastName } = req.locals;
@@ -17,10 +18,12 @@ const addComment = (req, res) => {
   newComment
     .save()
     .then((comment) => {
-      res.send(comment);
+      res.status(200).send({comment});
     })
     .catch((error) => {
-      console.log(error);
+      res
+          .status(httpStatus.SERVICE_ERROR.status)
+          .send(httpStatus.SERVICE_ERROR.send);
     });
 };
 

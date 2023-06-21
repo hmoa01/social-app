@@ -4,6 +4,7 @@ const {
   joinPostUser,
   joinPostLikes,
 } = require("../../stages/joins");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const singlePost = (req, res) => {
   const { postId } = req.params;
@@ -27,11 +28,14 @@ const singlePost = (req, res) => {
       if (post.length > 0) {
         res.send(post);
       } else {
-        res.send({ msg: "Post not exist!" });
+        res.status(httpStatus.NOT_EXIST.status)
+            .send(httpStatus.NOT_EXIST.send)
       }
     })
     .catch((error) => {
-      res.send({ error: error.message });
+      res
+          .status(401)
+          .send({error: error.message});
     });
 };
 

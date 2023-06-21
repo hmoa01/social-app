@@ -1,4 +1,5 @@
 const CommentModel = require("../../models/commentModel");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const singleComment = (req, res) => {
   const { commentId } = req.params;
@@ -16,10 +17,12 @@ const singleComment = (req, res) => {
       if (comment.length > 0) {
         res.send(comment);
       } else {
-        console.log("Comment not exist!");
+        res.status(httpStatus.NOT_EXIST.status)
+            .send({msg: "Comment not exist!"})
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => res.status(httpStatus.SERVICE_ERROR.status)
+        .send({error:error.message}));
 };
 
 module.exports = singleComment;

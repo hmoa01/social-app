@@ -1,4 +1,5 @@
 const tagModel = require("../../models/tagModel");
+const {httpStatus} = require("../../config/HttpErrors");
 
 const allTags = (req, res) => {
   tagModel
@@ -11,7 +12,9 @@ const allTags = (req, res) => {
       res.send({ tags });
     })
     .catch((err) => {
-      res.send({ err: err.message });
+        res
+            .status(httpStatus.SERVICE_ERROR.status)
+            .send(httpStatus.SERVICE_ERROR.send);
     });
 };
 

@@ -19,9 +19,9 @@ const editPost = (req, res) => {
 
   PostModel.findOneAndUpdate(query, body, { new: true })
     .then((posts) => {
-      res.send({ msg: "Post is successfully updated!", posts });
+      res.status(200).send({ msg: "Post is successfully updated!", posts });
     })
-    .catch((err) => res.send({ err: err.message }));
+    .catch((error) => res.status(403).send({error: error.message}));
 };
 
 module.exports = editPost;

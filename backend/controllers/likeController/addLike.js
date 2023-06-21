@@ -1,4 +1,5 @@
 const LikeModel = require("../../models/likeModel");
+const {httpStatus} = require("../../config/HttpErrors");
 const addLike = async (req,res,next) => {
     const {_id, ...currentUser} = req.locals;
     const {postId} = req.params;
@@ -19,9 +20,10 @@ const addLike = async (req,res,next) => {
 
     let like = new LikeModel(newLike)
     like.save().then(like => {
-        res.send(like)
+        res.status(200).send(like)
     }).catch(error => {
-        res.send({error:error.message})
+        res.status(httpStatus.SERVICE_ERROR.status)
+            .send(httpStatus.SERVICE_ERROR.send)
     })
 
 }

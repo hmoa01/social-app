@@ -1,5 +1,6 @@
 const PostModel = require("../../models/postModel");
 const {joinPostUser, joinPostLikes} = require("../../stages/joins");
+const {httpStatus} = require("../../config/HttpErrors");
 const searchPost = (req,res) => {
     const {q} = req.query;
 
@@ -20,10 +21,14 @@ const searchPost = (req,res) => {
             ...joinPostLikes,
             {$project: {userId:0}}
         ]).then(posts => {
-            res.send(posts)
+            res.status(200).send(posts)
         }).catch(error => {
-            res.send({error:error.message})
+            res.status(httpStatus.SERVICE_ERROR.status)
+                .send({error: error.message})
         })
+    } else {
+        res.status(httpStatus.INVALID_DATA.status)
+            .send(httpStatus.INVALID_DATA.send)
     }
 }
 module.exports = searchPost;

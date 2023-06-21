@@ -10,12 +10,17 @@ const editComment = (req,res) => {
     } else if (user.role !== "admin") {
         query = {$and: [{_id:commentId},{"user.id":user._id}]}
     } else {
-        res.send({msg: "You don't have permission!!"})
+        return res
+            .status(403)
+            .send({error: "You don't have permission to change other users post!"});
     }
 
     CommentModel.findOneAndUpdate(query, body, {new:true}).then(comment => {
-        res.send(comment);
-    }).catch(error => res.send({error: error.message}))
+        res
+            .status(200)
+            .send({message: 'Comment is successfully edited!', comment});
+    }).catch(error => res.status(403)
+        .send({error: error.message}))
 }
 
 module.exports = editComment;
