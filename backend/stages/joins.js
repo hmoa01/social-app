@@ -56,4 +56,22 @@ module.exports = {
     { $addFields: { "likeInfo.count": { $size: "$likeInfo.userId" } } },
     { $project: { "likeInfo._id": 0, reactions: 0 } },
   ],
+  joinSentMessageUser: [
+    {
+      $lookup: {
+        from: "users",
+        localField: "senderId",
+        foreignField: "_id",
+        as: "user",
+        pipeline: [
+            {
+              $project: {
+                firstName: 1,
+                lastName: 1
+              }
+            }
+        ]
+      },
+    }
+  ]
 };
