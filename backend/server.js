@@ -12,6 +12,9 @@ mongoose
   .catch((error) => console.log(error));
 
 server.use(express.json());
+server.get("/",(req, res)=>{
+  res.send("Welcome to Social app!")
+})
 
 server.use("/api", require("./routes"));
 
