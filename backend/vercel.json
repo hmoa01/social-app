@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "socail-app",
+  "name": "socail-app-be",
   "builds": [
     {
       "src": "server.js",
