@@ -1,0 +1,27 @@
+###GET ADS
+GET http://localhost:4000/api/ads/
+
+###ADD ADS
+POST http://localhost:4000/api/ads/add
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc1YmY1ZWJjZTkxZWYwZDUzYmI4ZDciLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZXMiLCJyb2xlIjoidXNlciIsInRpbWUiOjE2ODc0MTk4NjY3ODMsImlhdCI6MTY4NzQxOTg2NiwiZXhwIjoxNjg3NTA2MjY2fQ.oeI9je35s1Ijf00dkS_2j__WOCDr27R0v1kDk5WDpuc
+
+{
+  "title": "neka reklama",
+  "body": "Tekst reklame",
+  "image": "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=2000",
+  "startDate": "2023-06-21T16:36:06.839Z",
+  "endDate": "2023-06-25T16:36:06.839Z",
+  "price": 800,
+  "duration": "6"
+}
+
+###PAYMENT INIT
+POST http://localhost:4000/api/ads/paymentInit
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc1YmY1ZWJjZTkxZWYwZDUzYmI4ZDciLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZXMiLCJyb2xlIjoidXNlciIsInRpbWUiOjE2ODc0MTk4NjY3ODMsImlhdCI6MTY4NzQxOTg2NiwiZXhwIjoxNjg3NTA2MjY2fQ.oeI9je35s1Ijf00dkS_2j__WOCDr27R0v1kDk5WDpuc
+
+{
+  "price": 500,
+  "currency": "usd"
+}
