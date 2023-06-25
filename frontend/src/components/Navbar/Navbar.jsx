@@ -1,12 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assests/LOGO.png";
 import "./Navbar.css";
+import { logOutUser } from "../../store/userSlice";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.storeUser);
-  console.log(user);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    dispatch(logOutUser());
+    navigate("/login");
+  };
+
   return (
     <div className="flex justify-between border border-primary rounded-md mt-[35px] p-[10px] h-[90px] items-center w-[1370px]">
       <img src={logo} alt="logo" />
@@ -41,6 +50,7 @@ const Navbar = () => {
             <button
               type="button"
               className="bg-primary text-white px-[14px] py-[7px] rounded-lg"
+              onClick={handleLogOut}
             >
               Log out
             </button>
