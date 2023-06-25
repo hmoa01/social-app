@@ -4,7 +4,7 @@ export const FileParser = (file) => {
 
     fileReader.readAsDataURL(file);
 
-    fileReader.onload = () => resolve(console.log(fileReader.result));
+    fileReader.onload = () => resolve(fileReader.result);
 
     fileReader.onerror = () => reject(fileReader.error);
   });

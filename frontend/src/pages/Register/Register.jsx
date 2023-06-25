@@ -66,7 +66,7 @@ const Register = () => {
     formik.errors[name] && formik.touched[name] && formik.errors[name];
 
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-8 mt-[30px]">
       <Image alt="register-img" image={registerImg} />
       <div className="flex flex-col">
         <HeadingTitle title="REGISTER" />
@@ -119,7 +119,7 @@ const Register = () => {
             value={formik.values.password}
             onChange={formik.handleChange}
             name="password"
-            className="w-[595px] h-[37px]ormik. rounded-md border border-[#A1A0A0] p-2"
+            className="w-[595px] h-[37px] rounded-md border border-[#A1A0A0] p-2"
           />
           <label>
             Gender: <span className="text-red-600">{showError("gender")}</span>
