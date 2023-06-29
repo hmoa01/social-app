@@ -1,5 +1,6 @@
 const PostModel = require("../../models/postModel");
-const {httpStatus} = require("../../config/HttpErrors");
+const { httpStatus } = require("../../config/HttpErrors");
+const { joinPostLikes } = require("../../stages/joins");
 
 const userPosts = (req, res) => {
   const { userId } = req.params;
@@ -12,14 +13,15 @@ const userPosts = (req, res) => {
         },
       },
     },
+    ...joinPostLikes,
   ])
     .then((posts) => {
       res.send({ posts });
     })
     .catch((error) => {
       res
-          .status(httpStatus.SERVICE_ERROR.status)
-          .send(httpStatus.SERVICE_ERROR.status);
+        .status(httpStatus.SERVICE_ERROR.status)
+        .send(httpStatus.SERVICE_ERROR.status);
     });
 };
 

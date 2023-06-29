@@ -53,7 +53,7 @@ module.exports = {
       },
     },
     { $unwind: { path: "$likeInfo", preserveNullAndEmptyArrays: true } },
-    { $addFields: { "likeInfo.count": { $size: "$likeInfo.userId" } } },
+    //{ $addFields: { "likeInfo.count": { $size: "$likeInfo.userId" } } },
     { $project: { "likeInfo._id": 0, reactions: 0 } },
   ],
   joinSentMessageUser: [
@@ -64,14 +64,14 @@ module.exports = {
         foreignField: "_id",
         as: "user",
         pipeline: [
-            {
-              $project: {
-                firstName: 1,
-                lastName: 1
-              }
-            }
-        ]
+          {
+            $project: {
+              firstName: 1,
+              lastName: 1,
+            },
+          },
+        ],
       },
-    }
-  ]
+    },
+  ],
 };

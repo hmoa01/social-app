@@ -11,7 +11,7 @@ axios.defaults.baseURL = "http://localhost:4000/api";
 
 axios.interceptors.request.use((config) => {
   if (localStorage.hasOwnProperty("sa_token")) {
-    config.headers.Authorization = localStorage.getItem("sa_user");
+    config.headers.Authorization = localStorage.getItem("sa_token");
   }
   return config;
 });
@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto flex flex-col items-center">
       <Navbar />
       <Outlet />
       <ToastContainer />
