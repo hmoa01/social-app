@@ -2,9 +2,21 @@ import React from "react";
 import moment from "moment";
 import { AiOutlineLike } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import PostService from "../../services/PostService";
+import { useDispatch } from "react-redux";
+import { addRemoveLikeToggle } from "../../store/postsSlice";
 
 const Card = ({ post }) => {
   let user = JSON.parse(localStorage.getItem("sa_user"));
+
+  const dispatch = useDispatch();
+
+  const handleLike = () => {
+    PostService.addLike(post._id)
+      .then((res) => dispatch(addRemoveLikeToggle()))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="flex flex-col rounded-md overflow-hidden border border-primary">
       <div className="relative">
@@ -33,8 +45,11 @@ const Card = ({ post }) => {
         <p>{post.body.substring(0, 50)}...</p>
         <div className="flex justify-between p-1">
           <div className="flex gap-2 items-center text-primary">
-            <AiOutlineLike className="text-xl" />
-            {post.likeInfo?.userId.length}
+            <AiOutlineLike
+              onClick={handleLike}
+              className="text-xl cursor-pointer"
+            />
+            {post.likeInfo?.users.length}
           </div>
           {post._id === user._id ? (
             <div className="flex items-center gap-2 text-red-600">

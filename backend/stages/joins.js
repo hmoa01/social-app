@@ -44,7 +44,7 @@ module.exports = {
               users: {
                 $push: {
                   firstName: "$firstName",
-                  lastName: "lastName",
+                  lastName: "$lastName",
                 },
               },
             },
