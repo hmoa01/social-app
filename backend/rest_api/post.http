@@ -17,11 +17,11 @@ GET http://localhost:4000/api/posts/search?q=first
 ### ADD NEW POST
 POST http://localhost:4000/api/posts/add
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc0YmEzODkyOTQ4NDY1YzNiNzRlMDciLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZXMiLCJyb2xlIjoidXNlciIsInRpbWUiOjE2ODcxNjMwNzU2MzYsImlhdCI6MTY4NzE2MzA3NSwiZXhwIjoxNjg3MjQ5NDc1fQ.NbNU9QVMskvg8_st5kS6i-9HWXjuM_FkKESvWkFHoeo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk4NDcxZjZhYmZmMzE3MTExZGY1ODAiLCJmaXJzdE5hbWUiOiJBaG1lZCIsImxhc3ROYW1lIjoiTGVtZcWhIiwicm9sZSI6InVzZXIiLCJ0aW1lIjoxNjg4MTA4MjQ1NTk1LCJpYXQiOjE2ODgxMDgyNDUsImV4cCI6MTY4ODE5NDY0NX0.shsDZtxRupqfqLZV2r9ytGsPddclFRa9pMvd0jv7dtY
 
 {
-    "body": "Test za delete",
-    "title": "Neki drugi title",
+    "body": "Test 4 za delete",
+    "title": "Test 4 za delete",
     "image": "Neka slika",
     "tags": {"name": "neki tag"}
 }

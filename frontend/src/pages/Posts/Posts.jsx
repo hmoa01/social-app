@@ -7,14 +7,16 @@ import Card from "../../components/Card/Card";
 const Posts = () => {
   const dispatch = useDispatch();
 
-  const { posts, addRemoveLike } = useSelector((state) => state.storePosts);
+  const { posts, addRemoveLike, removePost } = useSelector(
+    (state) => state.storePosts
+  );
   console.log(posts);
 
   useEffect(() => {
     PostService.getAllPosts()
       .then((res) => dispatch(storeAllPosts(res.data)))
       .catch((err) => console.log(err));
-  }, [addRemoveLike]);
+  }, [addRemoveLike, removePost, posts]);
 
   return (
     <div className="flex mt-[30px]">

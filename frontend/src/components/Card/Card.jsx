@@ -4,7 +4,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import PostService from "../../services/PostService";
 import { useDispatch } from "react-redux";
-import { addRemoveLikeToggle } from "../../store/postsSlice";
+import { addRemoveLikeToggle, removePost } from "../../store/postsSlice";
 
 const Card = ({ post }) => {
   let user = JSON.parse(localStorage.getItem("sa_user"));
@@ -14,6 +14,12 @@ const Card = ({ post }) => {
   const handleLike = () => {
     PostService.addLike(post._id)
       .then((res) => dispatch(addRemoveLikeToggle()))
+      .catch((error) => console.log(error));
+  };
+
+  const handleRemove = () => {
+    PostService.deletePost(post._id)
+      .then((res) => dispatch(removePost()))
       .catch((error) => console.log(error));
   };
 
@@ -44,17 +50,34 @@ const Card = ({ post }) => {
         <h4 className="font-bold">{post.title}</h4>
         <p>{post.body.substring(0, 50)}...</p>
         <div className="flex justify-between p-1">
-          <div className="flex gap-2 items-center text-primary">
-            <AiOutlineLike
-              onClick={handleLike}
-              className="text-xl cursor-pointer"
-            />
-            {post.likeInfo?.users.length}
-          </div>
-          {post._id === user._id ? (
+          {post.likeInfo?.userId.includes(user._id) ? (
+            <div className="flex gap-2 items-center text-red-600">
+              <AiOutlineLike
+                onClick={handleLike}
+                className="text-xl cursor-pointer"
+              />
+              {post.likeInfo?.users.length > 0
+                ? post.likeInfo?.users.length
+                : 0}
+            </div>
+          ) : (
+            <div className="flex gap-2 items-center text-primary">
+              <AiOutlineLike
+                onClick={handleLike}
+                className="text-xl cursor-pointer"
+              />
+              {post.likeInfo?.users.length > 0
+                ? post.likeInfo?.users.length
+                : 0}
+            </div>
+          )}
+          {post.userId === user._id ? (
             <div className="flex items-center gap-2 text-red-600">
               REMOVE
-              <RiDeleteBin6Line className="text-xl" />
+              <RiDeleteBin6Line
+                onClick={handleRemove}
+                className="text-xl cursor-pointer"
+              />
             </div>
           ) : null}
         </div>
