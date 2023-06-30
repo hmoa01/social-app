@@ -2,21 +2,27 @@ import React, { useEffect } from "react";
 import PostService from "../../services/PostService";
 import { useDispatch, useSelector } from "react-redux";
 import { storeAllPosts } from "../../store/postsSlice";
+import { useSearchParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Posts = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const dispatch = useDispatch();
 
   const { posts, addRemoveLike, removePost } = useSelector(
     (state) => state.storePosts
   );
-  console.log(posts);
+
+  let page = searchParams.get("page") ? searchParams.get("page") : 2;
+  let limit = searchParams.get("limit") ? searchParams.get("limit") : 9;
 
   useEffect(() => {
-    PostService.getAllPosts()
+    PostService.getAllPosts(page, limit)
       .then((res) => dispatch(storeAllPosts(res.data)))
       .catch((err) => console.log(err));
-  }, [addRemoveLike, removePost, posts]);
+  }, [addRemoveLike, removePost, searchParams]);
 
   return (
     <div className="flex mt-[30px]">
@@ -26,7 +32,7 @@ const Posts = () => {
             <Card key={index} post={post} />
           ))}
         </div>
-        <div>PAGINATION</div>
+        <Pagination />
       </div>
       <div className="w-[565px]  ">
         <div>SEARCH</div>
