@@ -5,13 +5,15 @@ import { storeAllPosts } from "../../store/postsSlice";
 import { useSearchParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination/Pagination";
+import SearchPost from "../../components/SearchPost/SearchPost";
+import CreatePost from "../../components/CreatePost/CreatePost";
 
 const Posts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const dispatch = useDispatch();
 
-  const { posts, addRemoveLike, removePost } = useSelector(
+  const { posts, addRemoveLike, removePost, createNewPost } = useSelector(
     (state) => state.storePosts
   );
 
@@ -22,10 +24,10 @@ const Posts = () => {
     PostService.getAllPosts(page, limit)
       .then((res) => dispatch(storeAllPosts(res.data)))
       .catch((err) => console.log(err));
-  }, [addRemoveLike, removePost, searchParams]);
+  }, [addRemoveLike, removePost, searchParams, createNewPost]);
 
   return (
-    <div className="flex mt-[30px]">
+    <div className="flex mt-[30px] gap-[20px]">
       <div className="w-[700px] flex flex-col">
         <div className="grid grid-cols-3 gap-3">
           {posts.map((post, index) => (
@@ -35,8 +37,8 @@ const Posts = () => {
         <Pagination />
       </div>
       <div className="w-[565px]  ">
-        <div>SEARCH</div>
-        <div>CREATE POST</div>
+        <SearchPost />
+        <CreatePost />
       </div>
     </div>
   );

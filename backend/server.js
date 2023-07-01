@@ -4,13 +4,13 @@ require("dotenv").config();
 const cors = require("cors");
 const server = express();
 
-server.use(cors({ limit: "10mb" }));
+server.use(cors());
 
 mongoose
   .connect(process.env.DB_URL)
   .then(() => console.log("MongoDB is connected!"))
   .catch((error) => console.log(error));
-server.use(express.json());
+server.use(express.json({ limit: "10mb" }));
 server.get("/", (req, res) => {
   res.send("Welcome to Social app!");
 });
