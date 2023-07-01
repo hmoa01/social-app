@@ -8,6 +8,8 @@ import Login from "./pages/Login/Login";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Posts from "./pages/Posts/Posts";
+import PostDetails from "./pages/PostDetails/PostDetails";
+import Home from "./pages/Home/Home";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <div>ERROR</div>,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/register",
         element: <Register />,
@@ -26,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/posts",
         element: <Posts />,
+      },
+      {
+        path: "postDetails/:id",
+        element: <PostDetails />,
       },
     ],
   },

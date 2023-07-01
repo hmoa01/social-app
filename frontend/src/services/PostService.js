@@ -3,7 +3,7 @@ import axios from "axios";
 class PostService {
   static getAllPosts = (page, limit) =>
     axios.get(`/posts/all?page=${page}&limit=${limit}`);
-
+  static getSinglePost = (id) => axios.get(`/posts/singlePost/${id}`);
   static createNewPost = (body) => axios.post("/posts/add", body);
 
   static deletePost = (id) => axios.delete(`/posts/${id}`);

@@ -26,7 +26,7 @@ const singlePost = (req, res) => {
   ])
     .then((post) => {
       if (post.length > 0) {
-        res.send({ post });
+        res.send(post[0]);
       } else {
         res.status(httpStatus.NOT_EXIST.status).send(httpStatus.NOT_EXIST.send);
       }

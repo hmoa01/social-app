@@ -2,9 +2,11 @@ import React from "react";
 import moment from "moment";
 import { AiOutlineLike } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { LuView } from "react-icons/lu";
 import PostService from "../../services/PostService";
 import { useDispatch } from "react-redux";
 import { addRemoveLikeToggle, removePost } from "../../store/postsSlice";
+import { Link } from "react-router-dom";
 
 const Card = ({ post }) => {
   let user = JSON.parse(localStorage.getItem("sa_user"));
@@ -24,7 +26,7 @@ const Card = ({ post }) => {
   };
 
   return (
-    <div className="flex flex-col rounded-md overflow-hidden border border-primary">
+    <div className="flex flex-col rounded-md overflow-hidden border border-primary relative">
       <div className="relative">
         <div className="absolute inset-0 bg-black opacity-20" />
         <img
@@ -82,6 +84,9 @@ const Card = ({ post }) => {
           ) : null}
         </div>
       </div>
+      <Link to={`/postDetails/${post._id}`}>
+        <LuView className="absolute top-2 right-2 text-white cursor-pointer text-lg " />
+      </Link>
     </div>
   );
 };
