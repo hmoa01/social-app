@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assests/LOGO.png";
 import "./Navbar.css";
 import { logOutUser } from "../../store/userSlice";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.storeUser);
@@ -17,26 +18,26 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between border border-primary rounded-md mt-[35px] p-[10px] h-[90px] items-center 2xl:w-[1370px]">
+    <div className="flex justify-between border border-primary rounded-md mt-[35px] p-[10px] h-[90px] items-center w-[90%]">
       <img src={logo} alt="logo" />
       {localStorage.hasOwnProperty("sa_user") ? (
-        <div className="flex items-center justify-between w-[60%]">
-          <div className="flex gap-3 te">
+        <div className="hidden md:items-center md:justify-between md:w-[60%] md:flex">
+          <div className="flex gap-3 ">
             <NavLink
               to="/"
-              className="navbar_link hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-primary text-white   rounded-lg"
+              className="bg-primary text-white px-6 py-2 rounded-lg"
             >
               Home
             </NavLink>
             <NavLink
               to="/posts"
-              className="navbar_link hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-primary text-white  rounded-lg"
+              className="bg-primary text-white px-[14px] py-[7px] rounded-lg"
             >
               Posts
             </NavLink>
             <NavLink
               to="/ads"
-              className="navbar_link hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-primary text-white   rounded-lg"
+              className="bg-primary text-white px-[14px] py-[7px] rounded-lg"
             >
               Ads
             </NavLink>
@@ -60,18 +61,19 @@ const Navbar = () => {
         <div className="flex gap-2 items-center">
           <NavLink
             to="/register"
-            className="navbar_link hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-primary text-white   rounded-lg"
+            className="bg-primary text-white px-[14px] py-[7px] rounded-lg"
           >
             Register
           </NavLink>
           <NavLink
             to="/login"
-            className="navbar_link hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-primary text-white   rounded-lg "
+            className="bg-primary text-white px-[14px] py-[7px] rounded-lg  "
           >
             Login
           </NavLink>
         </div>
       )}
+      <GiHamburgerMenu className="text-2xl block md:hidden " />
     </div>
   );
 };

@@ -27,8 +27,8 @@ const Posts = () => {
   }, [addRemoveLike, removePost, searchParams, createNewPost]);
 
   return (
-    <div className="flex mt-[30px] gap-[20px]">
-      <div className="w-[700px] flex flex-col">
+    <div className="flex flex-col 2xl:flex 2xl:flex-row  mt-[30px] gap-[20px]">
+      <div className="w-[400px] md:w-[700px] md:flex flex flex-col">
         <div className="grid grid-cols-3 gap-3">
           {posts.map((post, index) => (
             <Card key={index} post={post} />

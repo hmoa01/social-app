@@ -26,7 +26,7 @@ const PostDetails = () => {
         </ul>
         <p className="w-[600px] text-lg mt-5">{post.body}</p>
         <p className="mt-[10px] text-xl">
-          Created by: {post.user.firstName} {post.user.lastName[0]}.
+          Created by: {post.user?.firstName} {post.user?.lastName[0]}.
         </p>
         <span>{moment(post.createdAt).format("dddd, hA")}</span>
         <hr className="border border-gray-400 mt-3" />
@@ -45,10 +45,10 @@ const PostDetails = () => {
             Add Comment
           </button>
           <div className="flex flex-col gap-3">
-            {post.comments.map((comment) => (
+            {post.comments?.map((comment) => (
               <div className="border border-primary rounded-md p-[10px] w-[530px]">
                 <h1 className="font-bold text-lg">
-                  {comment.user.firstName} {comment.user.lastName[0]}
+                  {comment.user?.firstName} {comment.user?.lastName[0]}
                 </h1>
                 <p className="text-gray-500">
                   Posted:{" "}
