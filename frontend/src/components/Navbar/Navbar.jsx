@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between border border-primary rounded-md mt-[35px] p-[10px] h-[90px] items-center w-[90%]">
+    <div className="flex justify-between border border-primary rounded-md mt-[20px] p-[10px] h-[90px] items-center w-[90%]">
       <img src={logo} alt="logo" />
       {localStorage.hasOwnProperty("sa_user") ? (
         <div className="hidden md:items-center md:justify-between md:w-[60%] md:flex">

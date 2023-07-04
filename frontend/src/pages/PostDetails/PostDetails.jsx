@@ -75,7 +75,7 @@ const PostDetails = () => {
   };
 
   return (
-    <div className="flex gap-4 p-5 border border-primary mt-[30px] rounded-md">
+    <div className="flex gap-4 p-5 border border-primary mt-[30px] md:w-[1380px] rounded-md">
       <div className="w-[50%]">
         <h1 className="text-3xl mt-[10px]">{post.title}</h1>
         <ul className="flex gap-2 mt-3 text-gray-500">

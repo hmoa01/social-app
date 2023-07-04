@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import { AiOutlineLike } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { BiEdit } from "react-icons/bi";
 import { LuView } from "react-icons/lu";
 import PostService from "../../services/PostService";
 import { useDispatch } from "react-redux";
@@ -86,6 +87,9 @@ const Card = ({ post }) => {
       </div>
       <Link to={`/postDetails/${post._id}`}>
         <LuView className="absolute top-2 right-2 text-white cursor-pointer text-lg " />
+      </Link>
+      <Link to={`/editPost/${post._id}`}>
+        <BiEdit className="absolute text-white cursor-pointer text-lg top-7 right-2" />
       </Link>
     </div>
   );

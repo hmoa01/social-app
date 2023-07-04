@@ -10,6 +10,7 @@ import store from "./store/store";
 import Posts from "./pages/Posts/Posts";
 import PostDetails from "./pages/PostDetails/PostDetails";
 import Home from "./pages/Home/Home";
+import EditPost from "./pages/EditPost/EditPost";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "postDetails/:id",
         element: <PostDetails />,
+      },
+      {
+        path: "editPost/:id",
+        element: <EditPost />,
       },
     ],
   },
