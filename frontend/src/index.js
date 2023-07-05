@@ -11,6 +11,7 @@ import Posts from "./pages/Posts/Posts";
 import PostDetails from "./pages/PostDetails/PostDetails";
 import Home from "./pages/Home/Home";
 import EditPost from "./pages/EditPost/EditPost";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -35,12 +36,16 @@ const router = createBrowserRouter([
         element: <Posts />,
       },
       {
-        path: "postDetails/:id",
+        path: "/postDetails/:id",
         element: <PostDetails />,
       },
       {
-        path: "editPost/:id",
+        path: "/editPost/:id",
         element: <EditPost />,
+      },
+      {
+        path: "/userProfile/:id",
+        element: <UserProfile />,
       },
     ],
   },

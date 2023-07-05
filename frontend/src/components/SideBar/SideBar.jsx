@@ -45,8 +45,8 @@ const SideBar = ({ isHamburgerClicked }) => {
         !sideBar ? "hidden" : ""
       }  flex bg-gray-700 items-center flex-col gap-3 fixed z-10 left-0 h-screen w-[40%]`}
     >
-      <h1>{sideBar}</h1>
       <NavLink
+        onClick={handleSideBar}
         to="/"
         className="bg-primary w-[60%] mt-[20px] text-white px-6 py-2 rounded-lg"
       >
@@ -54,6 +54,7 @@ const SideBar = ({ isHamburgerClicked }) => {
       </NavLink>
 
       <NavLink
+        onClick={handleSideBar}
         to="/posts"
         className="bg-primary w-[60%] mt-[20px] text-white px-6 py-2 rounded-lg"
       >
@@ -75,6 +76,7 @@ const SideBar = ({ isHamburgerClicked }) => {
         </button>
       ) : (
         <NavLink
+          onClick={handleSideBar}
           to="/login"
           className="bg-primary text-white px-[14px] py-[7px] rounded-lg  "
         >

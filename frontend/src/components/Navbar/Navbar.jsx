@@ -6,10 +6,12 @@ import logo from "../../assests/LOGO.png";
 import "./Navbar.css";
 import { logOutUser } from "../../store/userSlice";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Dropdown from "../Dropdown/Dropdown";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.storeUser);
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,6 +23,10 @@ const Navbar = () => {
 
   const handleSideBar = () => {
     setIsHamburgerClicked((prev) => !prev);
+  };
+
+  const handleDropdown = () => {
+    setDropdownOpen((prev) => !prev);
   };
 
   return (
@@ -80,10 +86,19 @@ const Navbar = () => {
             </NavLink>
           </div>
         )}
-        <GiHamburgerMenu
-          onClick={handleSideBar}
-          className="text-2xl block md:hidden "
-        />
+        <div className="relative flex items-center gap-2 md:hidden">
+          <img
+            onClick={handleDropdown}
+            src={user.image}
+            alt="profile-img"
+            className="w-[40px] h-[40px] object-cover rounded-full cursor-pointer"
+          />
+          <GiHamburgerMenu
+            onClick={handleSideBar}
+            className="text-2xl block "
+          />
+          <Dropdown dropdownOpen={dropdownOpen} />
+        </div>
       </div>
 
       <SideBar isHamburgerClicked={isHamburgerClicked}></SideBar>
