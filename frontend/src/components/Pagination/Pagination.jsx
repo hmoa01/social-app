@@ -12,12 +12,14 @@ const Pagination = () => {
   let limit = searchParams.get("limit")
     ? parseInt(searchParams.get("limit"))
     : 9;
+  let search = searchParams.get("q") ? searchParams.get("q") : null;
 
   useEffect(() => {
     handleSearchParams(page);
   }, [searchParams]);
 
-  const handleSearchParams = (page) => setSearchParams({ page, limit });
+  const handleSearchParams = (page) =>
+    setSearchParams({ page, limit, q: search });
 
   const handleCurrentPage = (e) => {
     handleSearchParams(e.target.name);

@@ -37,21 +37,21 @@ const Card = ({ post }) => {
         />
         <div className="text-white absolute left-2 top-2">
           <p>
-            {post.user.firstName} {post.user.lastName}
+            {post.user?.firstName} {post.user?.lastName}
           </p>
           <p>{moment(post.createdAt).format("MMM Do YY")}</p>
         </div>
       </div>
       <div className="p-[2px] grow flex flex-col justify-between">
         <ul className="flex gap-1">
-          {post.tags.map((tag, i) => (
+          {post.tags?.map((tag, i) => (
             <li key={i} className="text-gray-600">
               #{tag.name}
             </li>
           ))}
         </ul>
         <h4 className="font-bold">{post.title}</h4>
-        <p>{post.body.substring(0, 50)}...</p>
+        <p>{post.body?.substring(0, 50)}...</p>
         <div className="flex justify-between p-1">
           {post.likeInfo?.userId.includes(user._id) ? (
             <div className="flex gap-2 items-center text-red-600">
@@ -59,8 +59,8 @@ const Card = ({ post }) => {
                 onClick={handleLike}
                 className="text-xl cursor-pointer"
               />
-              {post.likeInfo?.users.length > 0
-                ? post.likeInfo?.users.length
+              {post.likeInfo?.users?.length > 0
+                ? post.likeInfo?.users?.length
                 : 0}
             </div>
           ) : (
@@ -69,12 +69,12 @@ const Card = ({ post }) => {
                 onClick={handleLike}
                 className="text-xl cursor-pointer"
               />
-              {post.likeInfo?.users.length > 0
-                ? post.likeInfo?.users.length
+              {post.likeInfo?.users?.length > 0
+                ? post.likeInfo?.users?.length
                 : 0}
             </div>
           )}
-          {post.userId === user._id ? (
+          {post?.userId === user?._id ? (
             <div className="flex items-center gap-2 text-red-600">
               REMOVE
               <RiDeleteBin6Line

@@ -12,15 +12,11 @@ const EditPost = () => {
   const ref = useRef();
   const [editPost, setEditPost] = useState(false);
 
-  const VALID_TYPE = ["image/jpg", "image/jpeg", "image/png"];
-  const KB = 1024;
-  const MB = KB * 1024;
-
   useEffect(() => {
     PostService.getSinglePost(id)
       .then((res) => setPost(res.data))
       .catch((error) => console.log(error));
-  }, [editPost.isEdited]);
+  }, [editPost]);
 
   const formik = useFormik({
     initialValues: {
@@ -60,7 +56,7 @@ const EditPost = () => {
     formik.errors[name] && formik.touched[name] && formik.errors[name];
 
   return (
-    <div className="flex mt-[30px] border border-primary rounded-lg">
+    <div className=" flex flex-col mt-[30px] border border-primary rounded-lg md:flex-row">
       <div className="w-[600px]">
         <form
           onSubmit={formik.handleSubmit}

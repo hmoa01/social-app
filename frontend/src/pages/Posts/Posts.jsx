@@ -19,18 +19,30 @@ const Posts = () => {
 
   let page = searchParams.get("page") ? searchParams.get("page") : 2;
   let limit = searchParams.get("limit") ? searchParams.get("limit") : 9;
+  let search = searchParams.get("q") ? searchParams.get("q") : null;
 
   useEffect(() => {
-    PostService.getAllPosts(page, limit)
-      .then((res) => dispatch(storeAllPosts(res.data)))
-      .catch((err) => console.log(err));
-  }, [addRemoveLike, removePost, searchParams, createNewPost]);
+    if (search) {
+      console.log("search, page, limit");
+      console.log(search, page, limit);
+      PostService.searchPost(search, page, limit)
+        .then((res) => {
+          console.log(res);
+          dispatch(storeAllPosts({ posts: res.data, count: res.data.length }));
+        })
+        .catch((error) => console.log(error));
+    } else {
+      PostService.getAllPosts(page, limit)
+        .then((res) => dispatch(storeAllPosts(res.data)))
+        .catch((err) => console.log(err));
+    }
+  }, [addRemoveLike, removePost, createNewPost, searchParams]);
 
   return (
     <div className="flex flex-col 2xl:flex 2xl:flex-row  mt-[30px] gap-[20px]">
       <div className="w-[400px] md:w-[700px] md:flex flex flex-col">
         <div className="grid grid-cols-3 gap-3">
-          {posts.map((post, index) => (
+          {posts?.map((post, index) => (
             <Card key={index} post={post} />
           ))}
         </div>

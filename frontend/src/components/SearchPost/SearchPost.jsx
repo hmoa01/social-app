@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import PostService from "../../services/PostService";
+import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { storeAllPosts } from "../../store/postsSlice";
 
 const SearchPost = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const dispatch = useDispatch();
 
   const handleSearchTerm = (e) => {
+    setSearchParams({ q: e.target.value });
     setSearchTerm(e.target.value);
   };
 
   const handleSubmitSearch = () => {
-    console.log(searchTerm);
+    PostService.searchPost(searchTerm)
+      .then((res) => {
+        console.log(res);
+        dispatch(storeAllPosts({ posts: res.data, count: res.data.count }));
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
