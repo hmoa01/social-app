@@ -28,7 +28,7 @@ const Dropdown = ({ dropdownOpen }) => {
       ref={dropdownRef}
       className={`${
         !outsideClick ? "hidden" : ""
-      } w-[100px] flex flex-col gap-2 absolute z-20 top-12 right-6 items-center bg-gray-500 text-white rounded-md p-3`}
+      } w-[100px] flex flex-col gap-2 absolute z-20 top-12 right-6 md:right-42 items-center bg-gray-500 text-white rounded-md p-3`}
     >
       <Link to={`/userProfile/${user._id}`} className="">
         My profile

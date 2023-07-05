@@ -55,8 +55,9 @@ const Navbar = () => {
                 Ads
               </NavLink>
             </div>
-            <div className="flex gap-2 w">
+            <div className="flex relative gap-2 w">
               <img
+                onClick={handleDropdown}
                 src={user.image}
                 alt="profile-img"
                 className="w-[40px] h-[40px] object-cover rounded-full cursor-pointer"
@@ -68,6 +69,7 @@ const Navbar = () => {
               >
                 Log out
               </button>
+              <Dropdown dropdownOpen={dropdownOpen} />
             </div>
           </div>
         ) : (
