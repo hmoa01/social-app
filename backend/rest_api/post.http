@@ -2,7 +2,7 @@
 GET http://localhost:4000/api/posts/all?page=2&limit=2
 
 ### GET USER POSTS
-GET http://localhost:4000/api/posts/644a553656f68374bf796488
+GET http://localhost:4000/api/posts/6498471f6abff317111df580
 
 ### GET SINGLE POST
 GET http://localhost:4000/api/posts/singlePost/644aedace62d6eb764d77785

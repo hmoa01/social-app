@@ -69,6 +69,7 @@ const Navbar = () => {
               >
                 Log out
               </button>
+
               <Dropdown dropdownOpen={dropdownOpen} />
             </div>
           </div>

@@ -28,12 +28,14 @@ const Dropdown = ({ dropdownOpen }) => {
       ref={dropdownRef}
       className={`${
         !outsideClick ? "hidden" : ""
-      } w-[100px] flex flex-col gap-2 absolute z-20 top-12 right-6 md:right-42 items-center bg-gray-500 text-white rounded-md p-3`}
+      } w-[100px] flex flex-col gap-2 absolute z-20 top-12 right-6 md:right-[85px] items-center bg-gray-500 text-white rounded-md p-3`}
     >
       <Link to={`/userProfile/${user._id}`} className="">
         My profile
       </Link>
-      <Link className="">My posts</Link>
+      <Link to={`/userPosts/${user._id}`} className="">
+        My posts
+      </Link>
       <div className="absolute top-[-5px] right-[20px]  bg-gray-500 w-5 h-5  rotate-45 "></div>
     </div>
   );
