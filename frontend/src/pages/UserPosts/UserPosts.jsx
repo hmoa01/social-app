@@ -31,6 +31,7 @@ const UserPosts = () => {
       </div>
     </div>
   );
+
 };
 
 export default UserPosts;
