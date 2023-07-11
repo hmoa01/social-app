@@ -42,7 +42,7 @@ const Card = ({ post }) => {
           <p>{moment(post.createdAt).format("MMM Do YY")}</p>
         </div>
       </div>
-      <div className="p-[2px] grow flex flex-col justify-between">
+      <div className="px-[5px] mt-1 grow flex flex-col justify-between">
         <ul className="flex gap-1">
           {post.tags?.map((tag, i) => (
             <li key={i} className="text-gray-600">

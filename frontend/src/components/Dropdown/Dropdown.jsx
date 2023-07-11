@@ -51,8 +51,8 @@ const Dropdown = ({ dropdownOpen }) => {
       <div
         className={`absolute top-[-5px] right-[20px] z-50 ${
           profile ? "bg-primary" : "bg-gray-400"
-        } w-5 h-5  rotate-45 `}
-      ></div>
+        } w-5 h-5  rotate-45 `}>
+      </div>
     </div>
   );
 };

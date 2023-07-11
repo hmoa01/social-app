@@ -16,7 +16,7 @@ const userPosts = (req, res) => {
     ...joinPostLikes,
   ])
     .then((posts) => {
-      res.send({ posts });
+      res.send(posts);
     })
     .catch((error) => {
       res

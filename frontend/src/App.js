@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <div className="container mx-auto flex flex-col items-center">
+    <div className="container p-3 mx-auto flex flex-col items-center">
       <Navbar />
       <Outlet />
       <ToastContainer />
